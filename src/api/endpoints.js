@@ -1,6 +1,6 @@
 export const endpoints = {
-  trending: "trending",
-  popular: "popular",
-  topRated: "top_rated",
-  upcoming: "upcoming",
+  trending: "trending/movie/week",
+  popular: "movie/popular",
+  topRated: "movie/top_rated",
+  upcoming: "movie/upcoming",
 };
