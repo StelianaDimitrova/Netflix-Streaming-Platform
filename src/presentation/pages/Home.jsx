@@ -7,9 +7,6 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [movies, setMovies] = useState([]);
 
-  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-  const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-
   useEffect(() => {
     const fetchMovies = async () => {
       try {

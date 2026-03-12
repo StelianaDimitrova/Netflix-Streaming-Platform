@@ -10,8 +10,7 @@
 }
 
 .scrollContainer {
-  overflow-x: auto;
-  overflow-y: visible;
+  overflow-x: scroll;
   scroll-behavior: smooth;
   scrollbar-width: none;
 }
