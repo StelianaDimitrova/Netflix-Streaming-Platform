@@ -1,3 +1,9 @@
 .homeMain {
   padding: 0;
 }
+
+.rowSections {
+  margin: -5rem 1rem 0;
+  position: relative;
+  z-index: 2;
+}

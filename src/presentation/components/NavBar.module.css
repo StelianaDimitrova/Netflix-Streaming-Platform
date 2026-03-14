@@ -1,6 +1,6 @@
 .logo {
   height: 2.5rem;
-  filter:saturate(120%);
+  filter: saturate(120%);
 }
 
 .navigation {
@@ -13,6 +13,7 @@
   font-size: large;
   font-family: "Inter";
   color: #fff;
+  background: none;
   transition: color 0.3s ease;
 }
 

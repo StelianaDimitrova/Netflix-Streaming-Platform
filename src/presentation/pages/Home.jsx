@@ -43,10 +43,12 @@ export default function Home() {
         description={popularMovies[0]?.overview}
       />
 
-      <MovieRow rowName="Trending" movies={trendingMovies} />
-      <MovieRow rowName="Popular" movies={popularMovies} />
-      <MovieRow rowName="Top rated" movies={topRatedMovies} />
-      <MovieRow rowName="Upcoming" movies={upcomingMovies} />
+      <div className={classes.rowSections}>
+        <MovieRow rowName="Trending" movies={trendingMovies} />
+        <MovieRow rowName="Popular" movies={popularMovies} />
+        <MovieRow rowName="Top rated" movies={topRatedMovies} />
+        <MovieRow rowName="Upcoming" movies={upcomingMovies} />
+      </div>
     </main>
   );
 }

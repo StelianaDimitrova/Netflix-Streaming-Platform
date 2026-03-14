@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import MovieRow from "../components/MovieRow";
+import classes from "./TVShows.module.css";
 import { showsGenres, showsEndpoints } from "../../api/showsEndpoints";
 import { fetchTVShows, fetchTVShowsByGenre } from "../../api/shows.api";
 
@@ -31,7 +32,7 @@ export default function Shows() {
   }, []);
 
   return (
-    <>
+    <div className={classes.sections}>
       <MovieRow rowName="Top Rated" movies={topRatedShows} />
       <MovieRow rowName="Airing Today" movies={airingTodayShows} />
 
@@ -42,6 +43,6 @@ export default function Shows() {
           movies={showsByGenre[genre.endpoint] || []}
         />
       ))}
-    </>
+    </div>
   );
 }

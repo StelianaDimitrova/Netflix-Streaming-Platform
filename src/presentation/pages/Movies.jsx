@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { movieGenres } from "../../api/genresEndpoints";
 import MovieRow from "../components/MovieRow";
 import { fetchMoviesByGenre } from "../../api/movies.api";
+import classes from "./Movies.module.css";
 
 export default function Movie() {
   const [moviesByGenre, setMoviesByGenre] = useState({});
@@ -20,7 +21,7 @@ export default function Movie() {
   }, []);
 
   return (
-    <>
+    <div className={classes.sections}>
       {movieGenres.map((genre) => (
         <MovieRow
           key={genre.endpoint}
@@ -29,6 +30,6 @@ export default function Movie() {
         />
       ))}
       ;
-    </>
+    </div>
   );
 }
