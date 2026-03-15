@@ -11,8 +11,6 @@ export const fetchMovies = async (endpoint) => {
     }
 
     const data = await response.json();
-    console.log(data.results);
-
     return data.results;
   } catch (error) {
     console.error("Error fetching movies:", error);
@@ -32,5 +30,21 @@ export const fetchMoviesByGenre = async (genreId) => {
     return data.results;
   } catch (error) {
     console.error("Error fetching movies by genre:", error);
+  }
+};
+
+export const fetchMovieDetails = async (id) => {
+  const URL = `${baseURL}movie/${id}?api_key=${API_KEY}&language=en-US`;
+
+  try {
+    const response = await fetch(URL);
+    if (!response.ok) {
+      throw new Error("Failed to fetch movie details");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching movie details:", error);
   }
 };
