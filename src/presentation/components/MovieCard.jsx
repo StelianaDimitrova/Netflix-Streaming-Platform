@@ -1,9 +1,26 @@
-import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
+import { useEffect } from "react";
+
+import PlayCircleOutlineOutlinedIcon from "@mui/icons-material/PlayCircleOutlineOutlined";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import InfoOutlineIcon from "@mui/icons-material/InfoOutline";
 
 import classes from "./MovieCard.module.css";
+import { useState } from "react";
+import { fetchMovieDetails } from "../../api/movies.api";
 
 export default function MovieCard({ movie }) {
+  const [displayedMovie, setDisplayedMovie] = useState();
+
+  useEffect(() => {
+    const loadDisplayedMovie = async () => {
+      const displayed = await fetchMovieDetails(movie.id);
+
+      setDisplayedMovie(displayed);
+    };
+
+    loadDisplayedMovie();
+  }, [movie.id]);
+
   return (
     <article className={classes.cardWrapper}>
       <img
@@ -13,12 +30,30 @@ export default function MovieCard({ movie }) {
       />
       <div className={classes.overlay}>
         <div className={classes.controls}>
-          <PlayCircleFilledIcon />
-          <AddCircleOutlineIcon />
+          <button>
+            <PlayCircleOutlineOutlinedIcon />
+          </button>
+          <button>
+            <AddCircleOutlineIcon />
+          </button>
+          <button>
+            <InfoOutlineIcon />
+          </button>
         </div>
         <div className={classes.metadata}>
-          <p>duration</p>
-          <p>genre</p>
+          <p className={classes.movieTitle}>{displayedMovie?.title}</p>
+          <span>
+            <p className={classes.releaseYear}>
+              {displayedMovie?.release_date.slice(0, 4)}
+            </p>
+            <p className={classes.duration}>{displayedMovie?.runtime} min</p>
+          </span>
+          <p>
+            {displayedMovie?.genres
+              ?.slice(0, 3)
+              .map((g) => g.name)
+              .join(" • ")}
+          </p>
         </div>
       </div>
     </article>
