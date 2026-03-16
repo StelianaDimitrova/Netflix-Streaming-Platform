@@ -7,9 +7,12 @@ import InfoOutlineIcon from "@mui/icons-material/InfoOutline";
 import classes from "./MovieCard.module.css";
 import { useState } from "react";
 import { fetchMovieDetails } from "../../api/movies.api";
+import { useContext } from "react";
+import { ModalContext } from "../../application/context/ModalContext";
 
 export default function MovieCard({ movie }) {
   const [displayedMovie, setDisplayedMovie] = useState();
+  const { openModal } = useContext(ModalContext);
 
   useEffect(() => {
     const loadDisplayedMovie = async () => {
@@ -36,7 +39,7 @@ export default function MovieCard({ movie }) {
           <button>
             <AddCircleOutlineIcon />
           </button>
-          <button>
+          <button onClick={() => openModal(displayedMovie)}>
             <InfoOutlineIcon />
           </button>
         </div>

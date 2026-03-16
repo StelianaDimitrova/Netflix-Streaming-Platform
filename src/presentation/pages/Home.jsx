@@ -35,13 +35,11 @@ export default function Home() {
     loadMovies();
   }, []);
 
+  console.log("movie",popularMovies[0]);
+
   return (
     <main className={classes.homeMain}>
-      <HeroBanner
-        banner={`https://image.tmdb.org/t/p/original${popularMovies[0]?.backdrop_path}`}
-        title={popularMovies[0]?.title}
-        description={popularMovies[0]?.overview}
-      />
+      <HeroBanner movie={popularMovies[0]} />
 
       <div className={classes.rowSections}>
         <MovieRow rowName="Trending" movies={trendingMovies} />

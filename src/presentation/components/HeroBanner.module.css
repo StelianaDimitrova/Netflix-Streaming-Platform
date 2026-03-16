@@ -9,6 +9,9 @@
   flex-direction: column;
   justify-content: center;
   padding: 2rem;
+
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
 
 .banner::after {
