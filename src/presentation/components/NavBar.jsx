@@ -20,6 +20,14 @@ export default function NavBar() {
           Home
         </NavLink>
         <NavLink
+          to="/movies"
+          className={({ isActive }) =>
+            isActive ? `${classes.navLink} ${classes.active}` : classes.navLink
+          }
+        >
+          Movies
+        </NavLink>
+        <NavLink
           to="/shows"
           className={({ isActive }) =>
             isActive ? `${classes.navLink} ${classes.active}` : classes.navLink
@@ -28,12 +36,12 @@ export default function NavBar() {
           TV Shows
         </NavLink>
         <NavLink
-          to="/movies"
+          to="/mylist"
           className={({ isActive }) =>
             isActive ? `${classes.navLink} ${classes.active}` : classes.navLink
           }
         >
-          Movies
+          My List
         </NavLink>
       </nav>
     </>

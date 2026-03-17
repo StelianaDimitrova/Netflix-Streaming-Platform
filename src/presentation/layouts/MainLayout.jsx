@@ -16,8 +16,9 @@ export default function MainLayout() {
       <main className={classes.mainSection}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/shows" element={<TVShows />} />
           <Route path="/movies" element={<Movies />} />
+          <Route path="/shows" element={<TVShows />} />
+          <Route path="/mylist" element={<TVShows />} />
         </Routes>
       </main>
       <footer>
