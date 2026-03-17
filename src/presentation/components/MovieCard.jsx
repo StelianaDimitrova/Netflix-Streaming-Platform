@@ -27,7 +27,7 @@ export default function MovieCard({ movie }) {
   return (
     <article className={classes.cardWrapper}>
       <img
-        src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
+        src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
         alt={movie.title || "Movie Poster"}
         className={classes.poster}
       />
