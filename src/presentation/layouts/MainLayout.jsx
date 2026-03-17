@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import SocialAccounts from "../components/SocialAccounts.jsx";
 
 import classes from "./MainLayout.module.css";
+import MyList from "../components/MyList.jsx";
 export default function MainLayout() {
   return (
     <div>
@@ -18,7 +19,7 @@ export default function MainLayout() {
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/shows" element={<TVShows />} />
-          <Route path="/mylist" element={<TVShows />} />
+          <Route path="/mylist" element={<MyList />} />
         </Routes>
       </main>
       <footer>
