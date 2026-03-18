@@ -20,7 +20,7 @@ export default function MainLayout() {
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/shows" element={<TVShows />} />
-          <Route path="/watch/:type/:id" element={<MediaPage />} />
+          <Route path="/:type/watch/:type/:id" element={<MediaPage />} />
           <Route path="/mylist" element={<MyList />} />
         </Routes>
       </main>
