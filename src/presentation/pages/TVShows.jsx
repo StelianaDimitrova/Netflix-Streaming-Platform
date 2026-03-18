@@ -41,6 +41,7 @@ export default function Shows() {
           key={genre.endpoint}
           rowName={genre.name}
           movies={showsByGenre[genre.endpoint] || []}
+          type="shows"
         />
       ))}
     </div>

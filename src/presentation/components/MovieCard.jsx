@@ -9,10 +9,13 @@ import { useState } from "react";
 import { fetchMovieDetails } from "../../api/movies.api";
 import { useContext } from "react";
 import { ModalContext } from "../../application/context/ModalContext";
+import { useNavigate } from "react-router-dom";
 
-export default function MovieCard({ movie }) {
+export default function MovieCard({ movie, type }) {
   const [displayedMovie, setDisplayedMovie] = useState();
   const { openModal } = useContext(ModalContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadDisplayedMovie = async () => {
@@ -24,6 +27,10 @@ export default function MovieCard({ movie }) {
     loadDisplayedMovie();
   }, [movie.id]);
 
+  function handlePlayButtonClick() {
+    navigate(`watch/${type}/${movie.id}`);
+  }
+
   return (
     <article className={classes.cardWrapper}>
       <img
@@ -33,7 +40,7 @@ export default function MovieCard({ movie }) {
       />
       <div className={classes.overlay}>
         <div className={classes.controls}>
-          <button>
+          <button onClick={handlePlayButtonClick}>
             <PlayCircleOutlineOutlinedIcon />
           </button>
           <button>

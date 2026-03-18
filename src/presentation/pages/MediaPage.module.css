@@ -1,0 +1,94 @@
+.mediaContainer {
+  padding-top: 4rem;
+  color: #fff;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.movieInfo {
+  display: flex;
+  padding: 40px 4%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.leftContainer {
+  flex: 2;
+}
+
+.movieTitle {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 25px;
+  margin-top: 0;
+}
+
+.buttons {
+  margin-bottom: 25px;
+}
+
+.btnAdd {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  border: none;
+  background-color: rgba(109, 109, 110, 0.7);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btnAdd:hover {
+  background-color: rgba(109, 109, 110, 0.4);
+}
+
+.overview {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: #e5e5e5;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.rightContainer {
+  flex: 1;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.rightContainer p {
+  margin: 0;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.rightContainer span {
+  color: #6d6d6d;
+}
+
+:global(.rating-badge) {
+  color: #46d369;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .movieInfo {
+    flex-direction: column;
+    padding: 20px 5%;
+    gap: 30px;
+  }
+
+  .videoWrapper {
+    height: 40vh;
+  }
+
+  .movieTitle {
+    font-size: 2rem;
+  }
+}

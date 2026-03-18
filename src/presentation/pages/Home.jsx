@@ -35,8 +35,6 @@ export default function Home() {
     loadMovies();
   }, []);
 
-  console.log("movie",popularMovies[0]);
-
   return (
     <main className={classes.homeMain}>
       <HeroBanner movie={popularMovies[0]} />

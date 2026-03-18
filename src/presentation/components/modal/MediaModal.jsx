@@ -6,7 +6,6 @@ import classes from "./MediaModal.module.css";
 
 export default function MediaModal() {
   const { selectedMovie, closeModal } = useContext(ModalContext);
-  console.log("Selected movie in modal:", selectedMovie);
   if (!selectedMovie) return null;
 
   return createPortal(

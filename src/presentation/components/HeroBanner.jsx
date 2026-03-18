@@ -2,9 +2,17 @@ import { useContext } from "react";
 import Button from "./Button";
 import classes from "./HeroBanner.module.css";
 import { ModalContext } from "../../application/context/ModalContext";
+import { useNavigate } from "react-router-dom";
 
 export default function HeroBanner({ movie }) {
   const { openModal } = useContext(ModalContext);
+  const navigate = useNavigate();
+
+    function handlePlayButtonClick() {
+    navigate(`watch/movie/${movie.id}`);
+  }
+
+
   return (
     <section
       className={classes.banner}
@@ -19,7 +27,11 @@ export default function HeroBanner({ movie }) {
         <p>{movie?.overview}</p>
 
         <div>
-          <Button customClassName={classes.playButton} title="Play" />
+          <Button
+            customClassName={classes.playButton}
+            title="Play"
+            onClick={handlePlayButtonClick}
+          />
           <Button
             customClassName={classes.infoButton}
             title="More Info"
