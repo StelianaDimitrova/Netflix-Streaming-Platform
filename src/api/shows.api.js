@@ -12,8 +12,6 @@ export const fetchTVShows = async (endpoint) => {
     }
 
     const data = await response.json();
-    console.log(data.results);
-
     return data.results;
   } catch (error) {
     console.error("Error fetching TV shows:", error);
