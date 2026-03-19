@@ -6,7 +6,6 @@ export default function ModalProvider({ children }) {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   function openModal(movie) {
-    console.log("Opening modal for movie:", movie);
     setSelectedMovie(movie);
   }
 
