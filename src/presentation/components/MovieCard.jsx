@@ -28,7 +28,7 @@ export default function MovieCard({ movie, type }) {
   }, [movie.id]);
 
   function handlePlayButtonClick() {
-    navigate(`watch/${type}/${movie.id}`);
+    navigate(`/watch/${type}/${movie.id}`);
   }
 
   return (
