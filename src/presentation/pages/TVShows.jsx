@@ -33,15 +33,15 @@ export default function Shows() {
 
   return (
     <div className={classes.sections}>
-      <MovieRow rowName="Top Rated" movies={topRatedShows} />
-      <MovieRow rowName="Airing Today" movies={airingTodayShows} />
+      <MovieRow rowName="Top Rated" movies={topRatedShows} type="tv" />
+      <MovieRow rowName="Airing Today" movies={airingTodayShows} type="tv" />
 
       {showsGenres.map((genre) => (
         <MovieRow
           key={genre.endpoint}
           rowName={genre.name}
           movies={showsByGenre[genre.endpoint] || []}
-          type="shows"
+          type="tv"
         />
       ))}
     </div>

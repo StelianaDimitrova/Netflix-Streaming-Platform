@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import VideoPlayer from "../components/VideoPlayer";
 import { fetchMovieDetails } from "../../api/movies.api";
+import { fetchShowsDetails } from "../../api/shows.api";
 import classes from "./MediaPage.module.css";
 
 export default function MediaPage() {
@@ -11,11 +12,13 @@ export default function MediaPage() {
 
   useEffect(() => {
     async function loadDetails() {
-      const details = await fetchMovieDetails(id);
+      const details = await (type === "movie"
+        ? fetchMovieDetails(id)
+        : fetchShowsDetails(id));
       setSelectedMovie(details);
     }
     loadDetails();
-  }, [id]);
+  }, [type, id]);
 
   return (
     <div className={classes.mediaContainer}>

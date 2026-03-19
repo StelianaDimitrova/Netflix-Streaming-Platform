@@ -10,6 +10,7 @@ import { fetchMovieDetails } from "../../api/movies.api";
 import { useContext } from "react";
 import { ModalContext } from "../../application/context/ModalContext";
 import { useNavigate } from "react-router-dom";
+import { fetchShowsDetails } from "../../api/shows.api";
 
 export default function MovieCard({ movie, type }) {
   const [displayedMovie, setDisplayedMovie] = useState();
@@ -19,23 +20,25 @@ export default function MovieCard({ movie, type }) {
 
   useEffect(() => {
     const loadDisplayedMovie = async () => {
-      const displayed = await fetchMovieDetails(movie.id);
+      const displayed = await (type === "movie"
+        ? fetchMovieDetails(movie.id)
+        : fetchShowsDetails(movie.id));
 
       setDisplayedMovie(displayed);
     };
 
     loadDisplayedMovie();
-  }, [movie.id]);
+  }, [type, movie.id]);
 
   function handlePlayButtonClick() {
-    navigate(`watch/${type}/${movie.id}`);
+    navigate(`/watch/${type}/${movie.id}`);
   }
 
   return (
     <article className={classes.cardWrapper}>
       <img
         src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-        alt={movie.title || "Movie Poster"}
+        alt={movie.title || movie.name || "Movie Poster"}
         className={classes.poster}
       />
       <div className={classes.overlay}>
@@ -51,12 +54,19 @@ export default function MovieCard({ movie, type }) {
           </button>
         </div>
         <div className={classes.metadata}>
-          <p className={classes.movieTitle}>{displayedMovie?.title}</p>
+          <p className={classes.movieTitle}>
+            {displayedMovie?.title || displayedMovie?.name}
+          </p>
           <span>
             <p className={classes.releaseYear}>
-              {displayedMovie?.release_date.slice(0, 4)}
+              {(
+                displayedMovie?.release_date || displayedMovie?.first_air_date
+              )?.slice(0, 4)}
             </p>
-            <p className={classes.duration}>{displayedMovie?.runtime} min</p>
+            <p className={classes.duration}>
+              {displayedMovie?.runtime || displayedMovie?.episode_run_time?.[0]}{" "}
+              min
+            </p>
           </span>
           <p>
             {displayedMovie?.genres
