@@ -5,11 +5,11 @@ import ModalProvider from "./application/context/ModalProvider";
 
 function App() {
   return (
-    <ModalProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <ModalProvider>
         <MainLayout />
-      </BrowserRouter>
-    </ModalProvider>
+      </ModalProvider>
+    </BrowserRouter>
   );
 }
 

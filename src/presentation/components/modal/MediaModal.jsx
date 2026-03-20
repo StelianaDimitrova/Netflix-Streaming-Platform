@@ -1,12 +1,23 @@
 import { useContext } from "react";
 import { createPortal } from "react-dom";
 import { ModalContext } from "../../../application/context/ModalContext";
+import Button from "../Button";
 
 import classes from "./MediaModal.module.css";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function MediaModal() {
+  const navigate = useNavigate();
+  const { type } = useParams();
+
   const { selectedMovie, closeModal } = useContext(ModalContext);
   if (!selectedMovie) return null;
+
+  const typeOfMedia = type === "movie" ? "movie" : "tv";
+
+  function handlePlayButtonClick() {
+    navigate(`/watch/${typeOfMedia}/${selectedMovie.id}`);
+  }
 
   return createPortal(
     <dialog className={classes.dialog}>
@@ -23,7 +34,11 @@ export default function MediaModal() {
           <div className={classes.content}>
             <h2>{selectedMovie.title || selectedMovie.name}</h2>
             <div className={classes.buttons}>
-              <button className={classes.playBtn}>Play</button>
+              <Button
+                customClassName={classes.playBtn}
+                title="Play"
+                onClick={handlePlayButtonClick}
+              />
               <button className={classes.listBtn}>Add to My List</button>
             </div>
             <p>{selectedMovie.overview}</p>
