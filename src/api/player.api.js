@@ -12,7 +12,20 @@ export default async function fetchVideo({ typeOfMedia, id }) {
     }
 
     const data = await response.json();
-    return data.results[0].key;
+    console.log(data.results);
+
+    const trailer = data.results.filter(
+      (clip) =>
+        clip.name.toLowerCase().includes("official trailer") ||
+        clip.name.toLowerCase().includes("series trailer"),
+    );
+
+    if (trailer.length === 0) {
+      console.log("No trailers found.");
+      return null;
+    }
+
+    return trailer[0].key;
   } catch (error) {
     console.error("Error fetching videos:", error);
   }

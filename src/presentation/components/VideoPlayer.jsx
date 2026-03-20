@@ -10,7 +10,10 @@ export default function VideoPlayer({ typeOfMedia, id }) {
     async function loadVideo() {
       const videoKey = await fetchVideo({ typeOfMedia, id });
 
-      if (videoKey) setVideoUrl(`https://www.youtube.com/embed/${videoKey}`);
+      if (videoKey)
+        setVideoUrl(
+          `https://www.youtube.com/embed/${videoKey}?autoplay=1&allowfullscreen`,
+        );
     }
 
     loadVideo();
