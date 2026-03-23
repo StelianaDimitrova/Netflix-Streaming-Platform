@@ -22,8 +22,8 @@ export default function MediaModal() {
   function handleAddButtonClick() {
     const currentFavs = JSON.parse(localStorage.getItem("myList") || "[]");
 
-    if (!currentFavs.includes(selectedMovie.id)) {
-      const updatedFavs = [...currentFavs, selectedMovie.id];
+    if (!currentFavs.includes(selectedMovie)) {
+      const updatedFavs = [...currentFavs, selectedMovie];
       localStorage.setItem("myList", JSON.stringify(updatedFavs));
     }
   }

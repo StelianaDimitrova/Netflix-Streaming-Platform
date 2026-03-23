@@ -28,3 +28,11 @@
 .scrollContainer::-webkit-scrollbar {
   display: none;
 }
+
+.myListStyle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 4rem 0;
+  margin: 0 2rem;
+}
