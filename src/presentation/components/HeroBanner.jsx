@@ -8,10 +8,9 @@ export default function HeroBanner({ movie }) {
   const { openModal } = useContext(ModalContext);
   const navigate = useNavigate();
 
-    function handlePlayButtonClick() {
+  function handlePlayButtonClick() {
     navigate(`watch/movie/${movie.id}`);
   }
-
 
   return (
     <section
