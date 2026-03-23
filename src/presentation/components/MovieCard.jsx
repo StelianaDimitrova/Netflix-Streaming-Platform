@@ -34,6 +34,15 @@ export default function MovieCard({ movie, type }) {
     navigate(`/watch/${type}/${movie.id}`);
   }
 
+  function handleAddButtonClick() {
+    const currentFavs = JSON.parse(localStorage.getItem("myList") || "[]");
+
+    if (!currentFavs.includes(movie.id)) {
+      const updatedFavs = [...currentFavs, movie.id];
+      localStorage.setItem("myList", JSON.stringify(updatedFavs));
+    }
+  }
+
   return (
     <article className={classes.cardWrapper}>
       <img
@@ -46,7 +55,7 @@ export default function MovieCard({ movie, type }) {
           <button onClick={handlePlayButtonClick}>
             <PlayCircleOutlineOutlinedIcon />
           </button>
-          <button>
+          <button onClick={handleAddButtonClick}>
             <AddCircleOutlineIcon />
           </button>
           <button onClick={() => openModal(displayedMovie)}>

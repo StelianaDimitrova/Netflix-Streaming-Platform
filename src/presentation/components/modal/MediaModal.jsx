@@ -19,6 +19,15 @@ export default function MediaModal() {
     navigate(`/watch/${typeOfMedia}/${selectedMovie.id}`);
   }
 
+  function handleAddButtonClick() {
+    const currentFavs = JSON.parse(localStorage.getItem("myList") || "[]");
+
+    if (!currentFavs.includes(selectedMovie.id)) {
+      const updatedFavs = [...currentFavs, selectedMovie.id];
+      localStorage.setItem("myList", JSON.stringify(updatedFavs));
+    }
+  }
+
   return createPortal(
     <dialog className={classes.dialog}>
       <div className={classes.backdrop} onClick={closeModal}>
@@ -39,7 +48,11 @@ export default function MediaModal() {
                 title="Play"
                 onClick={handlePlayButtonClick}
               />
-              <button className={classes.listBtn}>Add to My List</button>
+              <Button
+                customClassName={classes.listBtn}
+                title="Add to My List"
+                onClick={handleAddButtonClick}
+              />
             </div>
             <p>{selectedMovie.overview}</p>
             <div className={classes.details}>
