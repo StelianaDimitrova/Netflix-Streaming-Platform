@@ -1,33 +1,39 @@
-import { useEffect, useState } from "react";
-import fetchVideo from "../../api/player.api";
+import { useEffect } from "react";
 
 import classes from "./VideoPlayer.module.css";
+import YouTube from "react-youtube";
 
-export default function VideoPlayer({ typeOfMedia, id }) {
-  const [videoUrl, setVideoUrl] = useState("");
+const opts = {
+  height: "100%",
+  width: "100%",
+  playerVars: { autoplay: 1, controls: 1 },
+};
 
+export default function VideoPlayer({
+  videoKey,
+  playerRef,
+  handleProgress,
+  markWatched,
+}) {
   useEffect(() => {
-    async function loadVideo() {
-      const videoKey = await fetchVideo({ typeOfMedia, id });
+    const interval = setInterval(() => {
+      handleProgress();
+    }, 1000);
 
-      if (videoKey)
-        setVideoUrl(
-          `https://www.youtube.com/embed/${videoKey}?autoplay=1&allowfullscreen`,
-        );
-    }
-
-    loadVideo();
-  }, [typeOfMedia, id]);
+    return () => clearInterval(interval);
+  }, [handleProgress]);
 
   return (
     <div className={classes.videoWrapper}>
-      <iframe
-        src={videoUrl || null}
-        title="Movie trailor"
+      <YouTube
+        videoId={videoKey}
+        opts={opts}
+        onReady={(event) => {
+          playerRef.current = event.target;
+        }}
+        onEnd={markWatched}
         className={classes.video}
-        allowFullScreen
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      ></iframe>
+      />
     </div>
   );
 }
