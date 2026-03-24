@@ -8,6 +8,7 @@ import SocialAccounts from "../components/SocialAccounts.jsx";
 
 import classes from "./MainLayout.module.css";
 import MyList from "../pages/MyList.jsx";
+import History from "../pages/History.jsx";
 import MediaPage from "../pages/MediaPage.jsx";
 export default function MainLayout() {
   return (
@@ -22,6 +23,7 @@ export default function MainLayout() {
           <Route path="/shows" element={<TVShows />} />
           <Route path="/watch/:type/:id" element={<MediaPage />} />
           <Route path="/mylist" element={<MyList />} />
+          <Route path="/history" element={<History />} />
         </Routes>
       </main>
       <footer>
