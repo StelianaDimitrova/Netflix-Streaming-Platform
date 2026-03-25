@@ -4,11 +4,16 @@ import { useEffect, useState } from "react";
 import VideoPlayer from "../components/VideoPlayer";
 import { fetchMovieDetails } from "../../api/movies.api";
 import { fetchShowsDetails } from "../../api/shows.api";
+import fetchVideo from "../../api/player.api";
 import classes from "./MediaPage.module.css";
+import { useWatchedWithProgress } from "../../application/hooks/useWatchedWithProgress";
 
 export default function MediaPage() {
   const { type, id } = useParams();
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [videoKey, setVideoKey] = useState("");
+
+  const { markWatched, playerRef, handleProgress } = useWatchedWithProgress(id);
 
   useEffect(() => {
     async function loadDetails() {
@@ -20,9 +25,23 @@ export default function MediaPage() {
     loadDetails();
   }, [type, id]);
 
+  useEffect(() => {
+    async function loadVideo() {
+      const key = await fetchVideo({ typeOfMedia: type, id });
+      setVideoKey(key);
+    }
+    loadVideo();
+  }, [type, id]);
+
   return (
     <div className={classes.mediaContainer}>
-      <VideoPlayer typeOfMedia={type} id={id} />
+      <VideoPlayer
+        videoKey={videoKey}
+        playerRef={playerRef}
+        handleProgress={() => handleProgress(selectedMovie)}
+        markWatched={() => markWatched(selectedMovie)}
+        movieData={selectedMovie}
+      />
       <div className={classes.movieInfo}>
         <div className={classes.leftContainer}>
           <h2 className={classes.movieTitle}>

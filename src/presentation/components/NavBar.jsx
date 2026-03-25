@@ -43,6 +43,14 @@ export default function NavBar() {
         >
           My List
         </NavLink>
+        <NavLink
+          to="/history"
+          className={({ isActive }) =>
+            isActive ? `${classes.navLink} ${classes.active}` : classes.navLink
+          }
+        >
+          History
+        </NavLink>
       </nav>
     </>
   );
