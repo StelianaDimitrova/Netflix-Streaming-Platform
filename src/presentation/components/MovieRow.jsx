@@ -6,6 +6,7 @@ export default function MovieRow({
   movies,
   type = "movie",
   isMyList = false,
+  isHistory = false,
   onRemove = () => {},
 }) {
   return (
@@ -13,7 +14,11 @@ export default function MovieRow({
       <h2 className={classes.rowName}>{rowName}</h2>
       <div className={classes.scrollContainer}>
         <div
-          className={isMyList ? classes.myListStyle : classes.moviesContainer}
+          className={
+            isMyList || isHistory
+              ? classes.myListAndHistoryStyle
+              : classes.moviesContainer
+          }
         >
           {movies.map(
             (movie) =>
