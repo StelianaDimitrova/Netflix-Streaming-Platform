@@ -38,8 +38,9 @@ export default function MediaPage() {
       <VideoPlayer
         videoKey={videoKey}
         playerRef={playerRef}
-        handleProgress={handleProgress}
-        markWatched={markWatched}
+        handleProgress={() => handleProgress(selectedMovie)}
+        markWatched={() => markWatched(selectedMovie)}
+        movieData={selectedMovie}
       />
       <div className={classes.movieInfo}>
         <div className={classes.leftContainer}>

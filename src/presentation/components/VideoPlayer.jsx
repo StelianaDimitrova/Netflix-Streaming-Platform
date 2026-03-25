@@ -14,14 +14,15 @@ export default function VideoPlayer({
   playerRef,
   handleProgress,
   markWatched,
+  movieData,
 }) {
   useEffect(() => {
     const interval = setInterval(() => {
-      handleProgress();
+      handleProgress(movieData);
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [handleProgress]);
+  }, [handleProgress, movieData]);
 
   return (
     <div className={classes.videoWrapper}>
@@ -31,7 +32,7 @@ export default function VideoPlayer({
         onReady={(event) => {
           playerRef.current = event.target;
         }}
-        onEnd={markWatched}
+        onEnd={() => markWatched(movieData)}
         className={classes.video}
       />
     </div>
