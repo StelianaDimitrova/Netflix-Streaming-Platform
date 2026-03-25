@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <main className={classes.homeMain}>
-      <HeroBanner movie={popularMovies[0]} />
+      <HeroBanner movie={popularMovies[3]} />
 
       <div className={classes.rowSections}>
         <MovieRow rowName="Trending" movies={trendingMovies} />

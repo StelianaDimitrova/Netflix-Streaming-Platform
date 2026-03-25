@@ -4,10 +4,13 @@ header {
   align-items: center;
   padding: 1rem 2rem;
   gap: 2rem;
-  position: absolute;
-  z-index: 2;
   width: 100%;
-  background: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 footer {
