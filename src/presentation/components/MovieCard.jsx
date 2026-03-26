@@ -55,6 +55,7 @@ export default function MovieCard({ movie, type, isMyList, onRemove }) {
         src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
         alt={movie.title || movie.name || "Movie Poster"}
         className={classes.poster}
+        loading="lazy"
       />
       <div className={classes.overlay}>
         <div className={classes.controls}>

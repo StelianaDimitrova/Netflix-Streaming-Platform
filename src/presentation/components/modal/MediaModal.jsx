@@ -48,6 +48,7 @@ export default function MediaModal() {
             src={`https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`}
             alt={selectedMovie.title || selectedMovie.name}
             className={classes.banner}
+            loading="lazy"
           />
           <div className={classes.content}>
             <h2>{selectedMovie.title || selectedMovie.name}</h2>
