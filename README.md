@@ -21,3 +21,18 @@
 - **src/presentation/** — UI components (MovieCard, Modal, etc.).
 
 ## How to Run Locally
+1. **Clone the repository:**
+> git clone https://github.com/StelianaDimitrova/Movieflix-Streaming-Platform.git
+
+2. **Navigate to the project folder:**
+> cd Movieflix-Streaming-Platform
+
+3. **Install dependencies:**
+> npm install
+
+4. **Create an .env file:**
+In the root directory, create a **.env** file and add your key:
+> VITE_TMDB_API_KEY=your_api_key_here
+
+5. **Run the development server:**
+> npm run dev
