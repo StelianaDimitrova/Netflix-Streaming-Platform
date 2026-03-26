@@ -30,14 +30,14 @@
    cd Movieflix-Streaming-Platform
 
 3. **Install dependencies:**
-```bash
- npm install
+   ```bash
+   npm install
 
 4. **Create an .env file:**
 In the root directory, create a **.env** file and add your key:
-```bash
-VITE_TMDB_API_KEY=your_api_key_here
+   ```bash
+   VITE_TMDB_API_KEY=your_api_key_here
 
 5. **Run the development server:**
-```bash
-npm run dev
+   ```bash
+   npm run dev
