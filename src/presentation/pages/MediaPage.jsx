@@ -33,6 +33,18 @@ export default function MediaPage() {
     loadVideo();
   }, [type, id]);
 
+  function handleAddButtonClick() {
+    const currentFavs = JSON.parse(localStorage.getItem("myList") || "[]");
+    const isAlreadyInList = currentFavs.some(
+      (item) => item.id === selectedMovie.id,
+    );
+
+    if (!isAlreadyInList) {
+      const updatedFavs = [...currentFavs, selectedMovie];
+      localStorage.setItem("myList", JSON.stringify(updatedFavs));
+    }
+  }
+
   return (
     <div className={classes.mediaContainer}>
       <VideoPlayer
@@ -48,7 +60,9 @@ export default function MediaPage() {
             {selectedMovie?.title || selectedMovie?.name}
           </h2>
           <div className={classes.buttons}>
-            <button className={classes.btnAdd}>Add to My List</button>
+            <button className={classes.btnAdd} onClick={handleAddButtonClick}>
+              Add to My List
+            </button>
           </div>
           <p className={classes.overview}>{selectedMovie?.overview}</p>
         </div>
