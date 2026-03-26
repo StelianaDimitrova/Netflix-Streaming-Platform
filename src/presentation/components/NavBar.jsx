@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import logo from "/Netflix_logo_letters.svg";
+import logo from "/Movieflix_logo.svg.png";
 
 import classes from "./NavBar.module.css";
 
